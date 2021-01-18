@@ -1,25 +1,24 @@
 <html>
     <head>
     <meta charset='utf-8' />
-    <title>Edificios</title>
+    <title>Mapa 3D</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
     <link href='css/estilobase.css' rel='stylesheet' />
 
-    <script src='js/edificios.js'></script>
-    
+    <script src='js/3d.js'></script>
     <script>
-        //Añadir vuestor token y/o estilo !!
+        //Añadir vuestor token!!
         var map;
         function init() {
             mapboxgl.accessToken =
                 'pk.eyJ1IjoiZnJhbmt2YXJnYXMiLCJhIjoiY2tqa3R6ZnMzNGptcTJxcDl6cDc2enJvbyJ9.75fj_tv2OBwCDr0GgnITvA';
              map = new mapboxgl.Map({
                 container: 'map',
-                style: 'mapbox://styles/mapbox/dark-v10',
+                style: 'mapbox://styles/mapbox/satellite-streets-v10',
                 center: [2.16859, 41.3954],
-                zoom: 15,
+                zoom: 12,
                 attributionControl: false,
                 pitch: 45,
                 hash: true
@@ -29,23 +28,16 @@
             map.addControl(new mapboxgl.NavigationControl());
 
             map.on('load', function () {
-
-addEdificiosCapa();
-
-
-}); 
+             add3D();
+            }); //fin onload
 
         } // final init
     </script>
     </head>
-    
-    <div class="panelTopIzquierda">
-
-        <label id="altura">Más de 0 pisos</label>
-        <input  onChange="filtrarEdificios(this.value)" id="slider" type="range" min="1" max="50" step="1" value="0" />
-    </div>
 
     <body onload="init()">
+
+        
 
         <div id="map"></div>
     </body>
