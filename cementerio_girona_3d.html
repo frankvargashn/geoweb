@@ -1,0 +1,41 @@
+<html>
+    <head>
+    <meta charset='utf-8' />
+    <title>Cementerio Girona</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
+    <link href='css/estilobase.css' rel='stylesheet' />
+
+    <script src='js/3d.js'></script>
+    <script>
+        var map;
+        function init() {
+            mapboxgl.accessToken =
+                'pk.eyJ1IjoiZnJhbmt2YXJnYXMiLCJhIjoiY2tqa3R6ZnMzNGptcTJxcDl6cDc2enJvbyJ9.75fj_tv2OBwCDr0GgnITvA';
+             map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/frankvargas/cklcxwdxk4akg17myngusk1rd',
+                center: [2.837521, 41.97218],
+                zoom: 17,
+                attributionControl: false,
+                pitch: 75,
+                hash: true
+            });
+
+            map.addControl(new mapboxgl.AttributionControl({ compact: true }));
+            map.addControl(new mapboxgl.NavigationControl());
+
+            map.on('load', function () {
+             add3D();
+            }); 
+        } 
+    </script>
+    </head>
+
+    <body onload="init()">
+       
+    <div id="map"></div>
+    </body>
+
+    </html>
